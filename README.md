@@ -1,4 +1,4 @@
-# Ideas
+# Ideas Webapp
 
 ## How to
 
@@ -29,14 +29,14 @@ The admin panel can be found here: `http://localhost:8080/admin`.
 
 ## EC2 deployment
 
-## Provisioning the machine
+### Provisioning the machine
 
  * `ssh -i aws-key.pem user@domain.com`
  * `export AWS_ACCESS_KEY="..."`
  * `export AWS_SECRET_KEY="..."`
  * `ansible-playbook -i inventory --sudo playbook-ec2.yml --ask-sudo-pass`
 
-## Jenkins job
+### Jenkins job
 
 This is not a best practice, as we should use parameterized jobs to deploy on different environments,
 but I am using a deployment/ folder at the root of the project, which contains 'live' configurations.
