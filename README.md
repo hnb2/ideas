@@ -7,10 +7,6 @@
  * Load the virtualenv: `source env/bin/activate`
  * Initialize the db: `python manage.py migrate`
  * Launch the app: `python manage.py runserver 0.0.0.0:8000`
- * Access the application on your host browser: http://localhost:8000/ideas for development
- * Access the application on your host browser: http://192.168.33.10/ideas/ for production
-    * Make sure the supervisor job is running: `sudo supervisorctl start ideas`
-    * The port 80 is not forwarded to the host, so you need to use the machine IP
  * Create a super user: `python manage.py createsuperuser`
  * Access the DB: sudo su postgres && psql && \c ideas && \d && \q
 
@@ -27,7 +23,9 @@ export IDEAS_GOOGLE_SECRET='google-secret'
 
 ## Webapp access
 
-The port 8000 is forwarded to the host, you HAVE to access the website using this URL: `http://localhost:8000` otherwise the login won't work
+The port 8000 is forwarded to the host, you HAVE to access the website using this URL: `http://localhost:8000/ideas` otherwise the login won't work.
+
+The admin panel can be found here: `http://localhost:8080/admin`.
 
 ## EC2 deployment
 
