@@ -67,18 +67,15 @@ Run the following command: `python manage.py test`
 
 ### INFRA
 
- * Enable production mode (http://stackoverflow.com/questions/5836674/why-does-debug-false-setting-make-my-django-static-files-access-fail)
- * Use the normal workspace and THEN move the package to /opt
- * Create parameterized builds and use templating instead of hardcoded deployment/
- * Investigate the use of loggers (rsyslog impl)
+ * Enable production mode in deployment/settings.py (http://stackoverflow.com/questions/5836674/why-does-debug-false-setting-make-my-django-static-files-access-fail)
 
 ### FEATURES
 
  * Functionnal tests (https://docs.djangoproject.com/en/1.8/intro/tutorial05/)
- * Fix the admin pages CSS
- * Change index title (should not be 10, but 8)
- * Add '*' next to compulsory fields on the form page
+ * Fix the admin pages CSS (CSS goes 404 in the admin panel)
+ * Change index title (should not be 10, but 8 latest ideas)
+ * Add a star next to compulsory fields on the form page
  * Add a cancel button (go back to previous page) on the form page
  * Add a Delete Idea feature in the action bar of the details page
- * Add the tag feature (postgres text array + api)
+ * Add the tag feature (postgres text array + api + autocomplete field on create page)
  * Use purecss, jquery and quill libs locally (so that later we can minify them)
