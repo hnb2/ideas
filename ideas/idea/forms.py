@@ -73,7 +73,7 @@ class IdeaForm(forms.Form):
     Form to create a new idea.
     '''
     title = forms.CharField(
-        label='Title',
+        label='Title (*)',
         max_length=100
     )
     excerpt = forms.CharField(
@@ -82,12 +82,13 @@ class IdeaForm(forms.Form):
         max_length=200
     )
     description = DescriptionField(
-        label='Description',
+        label='Description (*)',
         max_char_length=1000,
         max_length=5000,
         widget=RichTextEditorWidget
     )
     categories = forms.ModelChoiceField(
+        label='Categories (*)',
         queryset=Category.objects.all(),
         empty_label=None
     )

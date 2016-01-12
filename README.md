@@ -73,7 +73,6 @@ Run the following command: `python manage.py test`
 
  * Functionnal tests (https://docs.djangoproject.com/en/1.8/intro/tutorial05/)
  * Fix the admin pages CSS (CSS goes 404 in the admin panel in production mode)
- * Add a star next to compulsory fields on the form page
  * Add a cancel button (go back to previous page) on the form page
  * Add a Delete Idea feature in the action bar of the details page
  * Add the tag feature (postgres text array + api + autocomplete field on create page)
