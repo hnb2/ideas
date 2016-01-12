@@ -1,0 +1,13 @@
+---
+
+- name: Install lib dependencies
+  apt: name=libpq-dev state=present
+
+- name: Install Postgresql
+  apt: name=postgresql state=present
+
+- name: Install Postresql-contrib
+  apt: name=postgresql-contrib state=present
+
+- name: Install Python driver
+  apt: name=python-psycopg2 state=present

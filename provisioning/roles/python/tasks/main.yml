@@ -1,0 +1,12 @@
+---
+- name: Install Python
+  apt: name='python-dev' state=present
+
+- name: Download Pip installation script
+  get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/tmp validate_certs=no
+
+- name: Install Pip
+  command: python /tmp/get-pip.py
+
+- name: Install Virtualenv
+  command: pip install virtualenv

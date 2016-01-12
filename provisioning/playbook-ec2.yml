@@ -1,0 +1,17 @@
+---
+- name: Provision the EC2 instance
+  hosts: ideas_ec2
+  connection: ssh
+  sudo: yes
+  remote_user: ubuntu
+  gather_facts: True
+  vars:
+    - base: /opt/ideas
+    - virtual_env_path: /opt/ideas/env
+    - server_name: domain.com
+  roles:
+    - python
+    - postgresql
+    - nginx
+    - supervisor
+    - ideas

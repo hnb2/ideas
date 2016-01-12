@@ -1,0 +1,130 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.7em;
+    background-color: #f6f6f6;
+    color: #556270;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+    color: #4ecdc4;
+}
+
+a {
+    text-decoration: none;
+    color: #1188d4
+}
+
+p {
+    font-size: 13px;
+}
+
+.l-box p.excerpt {
+    height: 90px; /*Exact height for the font/line-height*/
+    overflow: hidden;
+    text-align: justify;
+    line-height: 1.4em;
+}
+
+.l-box p.small {
+    font-size: 11px;
+    margin: 0;
+    line-height: 1.3em;
+}
+
+.l-box .more {
+    border-top: solid 1px #f6f6f6;
+}
+
+.is-center {
+    text-align: center;
+}
+
+.inner-container {
+    padding: 1em;
+    margin: 10px;
+    background: #ffffff none repeat scroll 0% 0%;
+}
+
+.details-container {
+    word-wrap: break-word;
+}
+
+.pure-form label {
+    margin: 1em 0 0;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.pure-form input[type] {
+    border: 2px solid #ddd;
+    box-shadow: none;
+    font-size: 100%;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.pure-button {
+    background-color: #c7f464;
+    color: #000000;
+    padding: 0.5em 2em;
+    border-radius: 5px;
+}
+
+/*Center the main content for screen with a width from 1024px*/
+@media (min-width: 1024px) {
+    .content-wrapper {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+}
+
+.content {
+    margin: 20px;
+}
+
+.footer {
+    background: #4d4d4d;
+    color: #ffffff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.content-subhead {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.facebook {
+    background-color: #3A5795;
+    color: #ffffff;
+}
+
+.google {
+    background-color: #dd4b39;
+    color: #ffffff;
+}
+
+/* Style for Quill Rich Text Editor */
+.quill-wrapper {
+    background-color: #ffffff;
+    border: 2px solid #dddddd;
+    min-height: 250px;
+}
+
+.quill-wrapper > #toolbar {
+    border-bottom: 1px solid #dddddd;
+}

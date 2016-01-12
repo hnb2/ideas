@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <h2 class="content-head is-center">
+                Login
+            </h2>
+        </div>
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1-2 is-center">
+            <a
+                href="{% url 'social:begin' 'facebook' %}?next={{ next_param }}"
+                class="pure-button facebook"
+            >
+                Login with Facebook !
+            </a>
+        </div>
+        <div class="pure-u-1-2 is-center">
+            <a
+                href="{% url 'social:begin' 'google-oauth2' %}?next={{ next_param }}"
+                class="pure-button google"
+            >
+                Login with Google !
+            </a>
+        </div>
+    </div>
+{% endblock %}

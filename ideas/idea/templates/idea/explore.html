@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Home page{% endblock %}
+
+{% block content %}
+    {% if latest_categories %}
+        <h2 class="content-head is-center">Explore ideas by category !</h2>
+        <div class="pure-g">
+            {% for category in latest_categories %}
+                <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                    <div class="inner-container l-box ">
+                        <h4 class="content-subhead">
+                            {{ category.title }}
+                        </h4>
+                        <p class="excerpt">{{ category.description }}</p>
+                        <div class="more is-center">
+                            <a href="{% url 'ideas:ideas' category.id %}">More</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No categories are available.</p>
+    {% endif %}
+{% endblock %}

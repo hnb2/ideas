@@ -1,0 +1,15 @@
+{% load date_tag %}
+
+<div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+    <div class="inner-container l-box ">
+        <h4 class="content-subhead">
+            {{ idea.title }}
+        </h4>
+        <p class="small">By {{ idea.user__first_name }}</p>
+        <p class="small">{{ idea.votes }} votes - {% format_date idea.created_date %}</p>
+        <p class="excerpt">{{ idea.excerpt }}</p>
+        <div class="more is-center">
+            <a href="{% url 'ideas:detail' idea.id %}">More</a>
+        </div>
+    </div>
+</div>

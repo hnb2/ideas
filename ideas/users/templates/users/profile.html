@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load date_tag %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <h2 class="content-head is-center">
+        Welcome to your profile {{ user.get_full_name|default:user.username }}
+    </h2>
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <h2 class="content-head is-center">Basic info</h2>
+            <small>You last logged in {% format_date user.last_login %}</small>
+            <p>First name: {{ user.first_name }}</p>
+            <p>Last name: {{ user.last_name }}</p>
+        </div>
+        <div class="pure-u-1">
+            <div class="pure-g">
+                <div class="pure-u-1">
+                    <h2 class="content-head is-center">My latest ideas</h2>
+                </div>
+                {% for idea in ideas %}
+                    {% include 'idea/single_idea.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

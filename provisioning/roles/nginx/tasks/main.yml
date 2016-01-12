@@ -1,0 +1,14 @@
+---
+
+- name: Install nginx
+  apt: name=nginx state=present
+
+- name: Remove the default configuration file symbolic link
+  file: path=/etc/nginx/sites-enabled/default state=absent
+
+- name: Remove the default configuration file
+  file: path=/etc/nginx/sites-available/default state=absent
+  notify: restart nginx
+
+- name: Start the nginx service
+  service: name=nginx state=started enabled=yes

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load date_tag %}
+
+{% block title %}{{ idea.title }}{% endblock %}
+
+{% block content %}
+    <div class="pure-g">
+
+        {% if idea.user.id == request.user.id %}
+            <div class="pure-u-1">
+                <div class="inner-container">
+                    <a href="{% url 'ideas:edit' idea.id %}" class="pure-button">Edit</a>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+            <div class="inner-container">
+                <p><b>Created:</b> {% format_date idea.created_date %}</p>
+
+                <p><b>By:</b> {{ idea.user.first_name }}</p>
+
+                <div class="vote">
+                    <p><b>Total votes:</b> <span id="vote-count">{{ idea.votes }}</span></p>
+                {% if has_not_voted %}
+                    <div class="vote-buttons is-center">
+                        <button id="upvote">+</button>
+                        <button id="downvote">-</button>
+                    </div>
+                {% else %}
+                    {% if user.id %}
+                        <p>You already voted for that idea.</p>
+                    {% else %}
+                        <p>You must be logged in order to vote.</p>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-4">
+            <div class="inner-container details-container">
+                <h3 class="content-subhead">
+                    {{ idea.title }}
+                </h3>
+
+                {% if idea.updated_date %}
+                <small>Last updated {% format_date_time idea.updated_date %}</small>
+                {% endif %}
+
+                <p>{{ idea.description|safe }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {% load staticfiles %}
+    <script src="{% static 'js/js.cookie.js' %}"></script>
+    <script src="{% static 'js/details.js' %}"></script>
+{% endblock %}

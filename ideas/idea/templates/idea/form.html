@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h2 class="content-head is-center">{{ title }}</h2>
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <form class="pure-form pure-form-stacked" method="post">
+                <fieldset>
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {{ field.errors }}
+                        {{ field.label_tag }} {{ field }}
+                    {% endfor %}
+                    <button class="pure-button" type="submit">Submit !</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="//cdn.quilljs.com/0.20.1/quill.snow.css" />
+    <script src="//cdn.quilljs.com/0.20.1/quill.js"></script>
+    <script src="{% static 'js/form.js' %}"></script>
+{% endblock %}

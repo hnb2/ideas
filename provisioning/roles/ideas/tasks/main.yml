@@ -1,0 +1,48 @@
+---
+- name: Create the virtualenv
+  pip: virtualenv_command=virtualenv virtualenv={{ virtual_env_path }} requirements={{ base }}/requirements.txt
+
+- name: Install gunicorn in the project
+  pip: virtualenv={{ virtual_env_path }} name=gunicorn
+
+- name: Delete the previous database (if any)
+  sudo: yes
+  sudo_user: postgres
+  postgresql_db: name=ideas state=absent
+
+- name: Create a new database
+  sudo: yes
+  sudo_user: postgres
+  postgresql_db: name=ideas
+
+- name: Create a database user and grant access
+  sudo: yes
+  sudo_user: postgres
+  postgresql_user: db=ideas name=ideas_user password=ideas_user role_attr_flags=CREATEDB
+
+- name: Send the dump.sql file
+  copy: src=dump.sql dest=/tmp/dump.sql
+
+- name: Initialize the database
+  command: '"{{ virtual_env_path }}/bin/python" {{ base }}/ideas/manage.py migrate'
+
+- name: Import default data
+  sudo: yes
+  sudo_user: postgres
+  shell: more /tmp/dump.sql | psql -d ideas
+
+- name: Send the gunicorn configuration file
+  template: src=gunicorn_config.py dest={{ virtual_env_path }}/
+
+- name: Send the Nginx configuration file
+  template: src=ideas.conf dest=/etc/nginx/sites-available/ideas.conf
+
+- name: Activate the Nginx configuration
+  file: src=/etc/nginx/sites-available/ideas.conf dest=/etc/nginx/sites-enabled/ideas.conf state=link
+  notify: restart nginx
+
+- name: Send the Supervisor configuration file
+  template: src=ideas_supervisor.conf dest=/etc/supervisor/conf.d/ideas.conf
+  notify:
+    - Reread supervisor
+    - Update supervisor

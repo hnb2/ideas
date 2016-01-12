@@ -1,0 +1,13 @@
+---
+- hosts: ideas
+  gather_facts: yes
+  vars:
+    - base: /vagrant
+    - virtual_env_path: /home/vagrant/env
+    - server_name: 192.168.33.10
+  roles:
+    - python
+    - supervisor
+    - nginx
+    - postgresql
+    - ideas

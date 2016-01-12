@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Home page{% endblock %}
+
+{% block content %}
+    {% if latest_ideas %}
+        <h2 class="content-head is-center">Our 10 Last Ideas !</h2>
+        <div class="pure-g">
+            {% for idea in latest_ideas %}
+                {% include 'idea/single_idea.html' %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No ideas are available.</p>
+    {% endif %}
+{% endblock %}
